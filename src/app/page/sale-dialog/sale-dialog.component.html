@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>{{ tituloDialog }}</h1>
+<div mat-dialog-content class="full-width">
+
+    <mat-form-field appearance="fill"  *ngIf="data.comanda">
+      <mat-label>Nome da Mesa</mat-label>
+      <input matInput [(ngModel)]="data.mesa" />
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+        <mat-label>Valor Total a Pagar</mat-label>
+        <input matInput currencyMask readonly [(ngModel)]="data.pagar" />
+           <!-- [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" /> -->
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Valor Pago</mat-label>
+        <input matInput currencyMask [(ngModel)]="data.pago" (ngModelChange)="calc()" required>
+              <!-- [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" -->
+
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Forma de pagamento</mat-label>
+        <mat-select id="pagamento" name="pagamento" [(value)]="data.payment" required>
+            <mat-option [value]="payment" *ngFor="let payment of payments">{{payment}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Troco</mat-label>
+        <input matInput currencyMask readonly [(ngModel)]="data.troco" >
+           <!-- [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" -->
+
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button [disabled]="data.troco<0 || data.payment==null" mat-button [mat-dialog-close]="data"
+        cdkFocusInitial>{{ nameBtn }}</button>
+</div>

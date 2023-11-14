@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  angular:
+    image: ewtm/pdv-app
+    container_name: pdv-app
+    ports:
+      - 4200:4200

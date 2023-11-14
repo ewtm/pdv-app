@@ -1,0 +1,7 @@
+docker build -t ewtm/pdv-app .
+docker run --rm -d -p 4200:4200 ewtm/pdv-app
+
+docker push ewtm/pdv-app
+
+
+docker-compose up
