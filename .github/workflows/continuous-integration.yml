@@ -27,6 +27,6 @@ jobs:
         file: Dockerfile
         push: true
         tags: |
-          ewtm/kube-news:${{ github.run_number }}
-          ewtm/kube-news:latest
+          ewtm/pdv-app:${{ github.run_number }}
+          ewtm/pdv-app:latest
 
